@@ -1,77 +1,837 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy — ShiaDaily</title>
-  <style>
-    body { font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-           line-height: 1.5; max-width: 720px; margin: 2rem auto; padding: 0 1.25rem;
-           color: #111; }
-    h1 { font-size: 1.5rem; }
-    h2 { font-size: 1.15rem; margin-top: 1.75rem; }
-    p, li { font-size: 0.95rem; }
-    .muted { color: #555; font-size: 0.9rem; }
-    a { color: #0645ad; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shia Daily — Turn your iPad into a Shia Azan Clock</title>
+<meta name="description" content="Shia Daily turns the iPad you already own into a beautiful always-on Shia azan clock — prayer times, azan alerts, Quran, duas & ziyarat, and the Islamic calendar. Free on the App Store.">
+<meta property="og:title" content="Shia Daily — Turn your iPad into a Shia Azan Clock">
+<meta property="og:description" content="An always-on azan clock, full Quran, duas & ziyarat, and the Shia Islamic calendar — free on the App Store.">
+<meta property="og:image" content="img/clock-hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#120709;
+  --panel:#1f0e12;
+  --panel-2:#2a1318;
+  --line:rgba(208,166,99,.18);
+  --gold:#c9a05a;
+  --gold-bright:#ecd2a0;
+  --cream:#f4ecdd;
+  --muted:#b9a895;
+  --teal:#2a8a76;
+  --teal-deep:#15564a;
+  --rose:#c4575f;
+  --radius:18px;
+  --display:'Marcellus',serif;
+  --body:'Inter',system-ui,-apple-system,sans-serif;
+  --arabic:'Amiri',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--cream);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--gold-bright)}
+:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.12}
+h2{font-size:clamp(30px,4.4vw,46px);letter-spacing:.01em}
+.section-head{max-width:680px;margin-bottom:48px}
+.section-head p{color:var(--muted);margin-top:14px}
+
+/* ---------- nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(18,7,9,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+nav{display:flex;align-items:center;gap:28px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cream);font-family:var(--display);font-size:21px;letter-spacing:.02em}
+.brand .moon{color:var(--gold);font-size:18px;transform:translateY(-1px)}
+nav .links{display:flex;gap:26px;margin-left:auto}
+nav .links a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .2s}
+nav .links a:hover{color:var(--gold-bright)}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--gold);color:#241204;
+  padding:11px 22px;border-radius:999px;
+  font-weight:600;font-size:15px;text-decoration:none;
+  transition:transform .15s ease, background .2s;
+}
+.btn:hover{background:var(--gold-bright);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--gold-bright);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold);background:rgba(201,160,90,.08)}
+@media(max-width:760px){nav .links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding:84px 0 70px;
+  background:
+    radial-gradient(900px 480px at 78% -10%, rgba(94,26,36,.55), transparent 65%),
+    radial-gradient(700px 420px at 8% 110%, rgba(21,86,74,.28), transparent 60%),
+    var(--ink);
+}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,62px);margin:18px 0 20px}
+.hero h1 em{font-style:normal;color:var(--gold-bright)}
+.hero .sub{color:var(--muted);font-size:18.5px;max-width:46ch}
+.hero .bismillah{font-family:var(--arabic);color:var(--gold);font-size:22px;opacity:.85;margin-bottom:4px}
+.hero .cta-row{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
+.fineprint{font-size:13.5px;color:var(--muted)}
+.fineprint strong{color:var(--gold-bright);font-weight:600}
+.platforms{display:flex;gap:18px;margin-top:26px;font-size:13px;color:var(--muted);letter-spacing:.06em}
+.platforms span{display:flex;align-items:center;gap:7px}
+.platforms .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+
+/* live clock device */
+.device{
+  border-radius:26px;
+  background:#000;
+  padding:14px;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.85), 0 0 0 1px rgba(208,166,99,.22);
+}
+.screen{
+  border-radius:16px;overflow:hidden;position:relative;
+  aspect-ratio:4/3;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(85,24,33,.65), transparent 60%),
+    linear-gradient(180deg,#1c0c10 0%, #120709 70%);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.screen .statusline{
+  position:absolute;top:14px;left:20px;right:20px;
+  display:flex;justify-content:space-between;
+  font-size:11px;color:var(--muted);letter-spacing:.04em;
+}
+.screen .hijri{color:var(--gold);font-size:14px;text-align:center;letter-spacing:.05em}
+.screen .liveclock{
+  font-family:var(--body);font-weight:700;text-align:center;
+  font-size:clamp(64px,9vw,104px);line-height:1.02;letter-spacing:-.02em;
+  color:#fff;
+}
+.screen .liveclock small{font-size:.32em;font-weight:600;color:var(--gold);margin-left:6px;vertical-align:22%}
+.screen .nextprayer{text-align:center;color:var(--cream);font-size:17px;margin-top:6px}
+.screen .nextprayer b{font-family:var(--display);font-weight:400;font-size:21px;color:var(--gold-bright)}
+.screen .countdown{text-align:center;color:var(--muted);font-size:13.5px;margin-top:2px}
+.prayer-row{
+  display:flex;gap:8px;justify-content:center;margin-top:26px;padding:0 18px;
+}
+.pill{
+  flex:1;max-width:104px;text-align:center;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(208,166,99,.14);
+  border-radius:12px;padding:10px 4px;
+}
+.pill .pname{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pill .ptime{font-size:14.5px;font-weight:600;color:var(--cream);margin-top:3px}
+.pill.active{background:rgba(201,160,90,.16);border-color:var(--gold)}
+.pill.active .pname{color:var(--gold-bright)}
+.device-caption{margin-top:14px;text-align:center;font-size:12.5px;color:var(--muted)}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .hero{padding:56px 0}
+}
+
+/* ---------- ribbon ---------- */
+.ribbon{border-block:1px solid var(--line);background:var(--panel)}
+.ribbon .wrap{
+  display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;
+  padding:18px 24px;font-size:13.5px;color:var(--muted);letter-spacing:.05em;
+}
+.ribbon span::before{content:"◆";color:var(--gold);font-size:8px;margin-right:10px;vertical-align:15%}
+
+/* ---------- clock gallery ---------- */
+section{padding:96px 0}
+.frame{
+  border-radius:20px;background:#000;padding:10px;
+  box-shadow:0 24px 60px -24px rgba(0,0,0,.8), 0 0 0 1px rgba(208,166,99,.16);
+}
+.frame img{border-radius:12px}
+.clock-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+.clock-grid figure figcaption,
+.feature figcaption{
+  margin-top:16px;color:var(--muted);font-size:15px;line-height:1.55;
+}
+.clock-grid figcaption b, .feature figcaption b{
+  display:block;color:var(--cream);font-family:var(--display);
+  font-weight:400;font-size:19px;margin-bottom:4px;letter-spacing:.01em;
+}
+.clock-hero-shot{margin-bottom:34px}
+@media(max-width:760px){.clock-grid{grid-template-columns:1fr}}
+
+/* ---------- devices / ecosystem ---------- */
+.devices{
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(94,26,36,.45), transparent 72%),
+    var(--panel);
+  border-block:1px solid var(--line);
+  overflow:hidden;
+}
+.devices .section-head{margin-inline:auto;text-align:center}
+.device-block{margin-top:84px}
+.device-block:first-of-type{margin-top:8px}
+.device-eyebrow{
+  display:flex;align-items:center;gap:14px;justify-content:center;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;
+  margin-bottom:10px;
+}
+.device-eyebrow::before,.device-eyebrow::after{content:"";height:1px;width:46px;background:var(--line)}
+.device-block h3{font-family:var(--display);font-size:clamp(24px,3vw,34px);text-align:center;font-weight:400}
+.device-block .blurb{text-align:center;color:var(--muted);max-width:60ch;margin:12px auto 0;font-size:16px}
+
+/* Apple TV */
+.tv{max-width:940px;margin:40px auto 0}
+.tv .tv-screen{
+  background:#000;border-radius:14px;padding:10px;
+  box-shadow:0 0 0 2px #2c2c2e, 0 50px 110px -30px rgba(0,0,0,.95), 0 0 90px -20px rgba(201,160,90,.28);
+}
+.tv .tv-screen img{border-radius:6px;width:100%}
+.tv .tv-neck{width:120px;height:14px;margin:0 auto;background:linear-gradient(180deg,#1a1a1c,#0c0c0d);border-radius:0 0 4px 4px}
+.tv .tv-base{width:300px;height:7px;margin:0 auto;background:linear-gradient(180deg,#2a2a2d,#101011);border-radius:999px}
+.tv-thumbs{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px;
+}
+.tv-thumbs figure{border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line);background:#000}
+.tv-thumbs img{width:100%;display:block}
+.tv-thumbs figcaption{font-size:12.5px;color:var(--muted);text-align:center;padding:9px 8px;line-height:1.35}
+.tv-thumbs figcaption b{color:var(--cream);font-weight:600;display:block}
+@media(max-width:760px){.tv-thumbs{grid-template-columns:1fr 1fr}}
+
+/* iPhone fan */
+.phone-fan{
+  display:flex;justify-content:center;align-items:flex-end;
+  gap:clamp(10px,2.2vw,26px);margin-top:44px;flex-wrap:wrap;
+}
+.phone{
+  width:min(216px,52vw);
+  background:#0a0a0b;border-radius:36px;padding:8px;position:relative;flex:0 0 auto;
+  box-shadow:0 0 0 2px #3a3a3d, 0 0 0 4px #141416, 0 34px 70px -24px rgba(0,0,0,.9);
+}
+.phone::before{
+  content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);
+  width:68px;height:19px;border-radius:999px;background:#000;z-index:2;
+  box-shadow:inset 0 0 0 1px #1c1c1e;
+}
+.phone img{border-radius:29px;width:100%;display:block}
+.phone.tall{transform:translateY(-22px)}
+.phone-caption{text-align:center;color:var(--muted);font-size:13px;margin-top:10px}
+.iphone-features{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px 36px;
+  max-width:920px;margin:46px auto 0;
+}
+.iphone-features .item b{display:block;color:var(--cream);font-weight:600;font-size:15.5px;margin-bottom:4px}
+.iphone-features .item b::before{content:"◆";color:var(--gold);font-size:9px;margin-right:9px;vertical-align:15%}
+.iphone-features .item p{color:var(--muted);font-size:14px;line-height:1.5}
+@media(max-width:820px){.iphone-features{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.iphone-features{grid-template-columns:1fr}}
+
+/* Apple Watch — real screenshots */
+.watch-block{
+  background:linear-gradient(180deg, rgba(20,9,12,.5), transparent);
+}
+.watch-row{
+  display:flex;justify-content:center;align-items:center;
+  gap:clamp(16px,3vw,44px);margin-top:44px;flex-wrap:wrap;
+}
+/* faces already include a bezel in the screenshot */
+.watch-face{width:min(220px,58vw);flex:0 0 auto}
+.watch-face img{width:100%;display:block;filter:drop-shadow(0 28px 50px rgba(0,0,0,.7))}
+.watch-face.mid{transform:scale(1.08)}
+/* in-app screens need a drawn case */
+.watch-app{
+  width:min(168px,46vw);flex:0 0 auto;position:relative;
+  background:#0a0a0b;border-radius:42px;padding:9px;
+  box-shadow:0 0 0 2px #46464a, 0 0 0 5px #19191b, 0 24px 50px -18px rgba(0,0,0,.9);
+}
+.watch-app::after{content:"";position:absolute;right:-7px;top:42px;width:8px;height:28px;border-radius:4px;background:linear-gradient(180deg,#5a5a5e,#2c2c2e)}
+.watch-app img{width:100%;display:block;border-radius:34px}
+.watch-caption{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
+.watch-features{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px 36px;
+  max-width:880px;margin:46px auto 0;
+}
+.watch-features .item b{display:block;color:var(--cream);font-weight:600;font-size:15.5px;margin-bottom:4px}
+.watch-features .item b::before{content:"◆";color:var(--gold);font-size:9px;margin-right:9px;vertical-align:15%}
+.watch-features .item p{color:var(--muted);font-size:14px;line-height:1.5}
+@media(max-width:820px){.watch-features{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.watch-features{grid-template-columns:1fr}.watch-face.mid{transform:none}}
+
+/* ---------- rooms gallery ---------- */
+.rooms .lead-photo{border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 70px -28px rgba(0,0,0,.85), 0 0 0 1px var(--line)}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:26px}
+.rooms-grid figure{border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 18px 44px -20px rgba(0,0,0,.8), 0 0 0 1px var(--line)}
+.rooms-grid img, .rooms .lead-photo img{width:100%;height:100%;object-fit:cover}
+.rooms-grid figcaption, .rooms .lead-photo figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:42px 20px 16px;
+  background:linear-gradient(180deg,transparent, rgba(10,4,5,.86));
+  font-size:14.5px;color:var(--cream);
+}
+.rooms .lead-photo{position:relative}
+.rooms .lead-photo figcaption{font-size:16px;padding:64px 26px 20px}
+.rooms-grid figcaption b, .rooms .lead-photo figcaption b{color:var(--gold-bright);font-weight:600}
+@media(max-width:900px){.rooms-grid{grid-template-columns:1fr}}
+
+/* ---------- clock detail list ---------- */
+.detail-list{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:30px 40px;
+  margin-top:56px;padding-top:48px;border-top:1px solid var(--line);
+}
+.detail-list .item b{display:block;color:var(--cream);font-weight:600;font-size:16px;margin-bottom:4px}
+.detail-list .item b::before{content:"◆";color:var(--gold);font-size:9px;margin-right:10px;vertical-align:15%}
+.detail-list .item p{color:var(--muted);font-size:14.5px;line-height:1.55}
+@media(max-width:900px){.detail-list{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.detail-list{grid-template-columns:1fr}}
+
+/* ---------- smart home ---------- */
+.smarthome{background:linear-gradient(180deg,#0d1a16 0%, var(--ink) 100%);border-block:1px solid rgba(42,138,118,.25)}
+.smarthome .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.smarthome .eyebrow{color:#7fd2bf}
+.smarthome figure{border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 30px 70px -28px rgba(0,0,0,.85), 0 0 0 1px rgba(42,138,118,.3)}
+.smarthome figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:54px 24px 18px;
+  background:linear-gradient(180deg,transparent, rgba(6,12,10,.88));
+  font-size:14.5px;color:var(--cream);
+}
+.smarthome ul{list-style:none;display:grid;gap:22px;margin-top:34px}
+.smarthome li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.smarthome .glyph{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(42,138,118,.14);border:1px solid rgba(42,138,118,.35);
+  color:#7fd2bf;font-size:19px;
+}
+.smarthome li b{display:block;color:var(--cream);font-weight:600;font-size:16.5px}
+.smarthome li p{color:var(--muted);font-size:15px;margin-top:2px}
+@media(max-width:900px){.smarthome .wrap{grid-template-columns:1fr;gap:40px}}
+
+/* ---------- features ---------- */
+.features{background:linear-gradient(180deg,var(--panel) 0%, var(--ink) 100%);border-block:1px solid var(--line)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.feature .frame{padding:8px}
+@media(max-width:980px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.feat-grid{grid-template-columns:1fr}}
+
+/* ---------- why app ---------- */
+.why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.why ul{list-style:none;display:grid;gap:22px;margin-top:34px}
+.why li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.why .glyph{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(42,138,118,.14);border:1px solid rgba(42,138,118,.35);
+  color:#7fd2bf;font-size:19px;
+}
+.why li b{display:block;color:var(--cream);font-weight:600;font-size:16.5px}
+.why li p{color:var(--muted);font-size:15px;margin-top:2px}
+@media(max-width:900px){.why .wrap{grid-template-columns:1fr;gap:40px}}
+
+/* ---------- faq ---------- */
+.faq details{
+  border:1px solid var(--line);border-radius:14px;
+  background:var(--panel);margin-bottom:14px;overflow:hidden;
+}
+.faq summary{
+  cursor:pointer;list-style:none;padding:20px 24px;
+  font-weight:600;font-size:16.5px;color:var(--cream);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:24px;color:var(--gold);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 24px 22px;color:var(--muted);font-size:15.5px;max-width:72ch}
+
+/* ---------- final cta ---------- */
+.final{
+  text-align:center;
+  background:
+    radial-gradient(640px 360px at 50% 0%, rgba(94,26,36,.5), transparent 70%),
+    var(--panel);
+  border-top:1px solid var(--line);
+}
+.final .bismillah{font-family:var(--arabic);color:var(--gold);font-size:26px;margin-bottom:14px}
+.final h2{margin-bottom:14px}
+.final p{color:var(--muted);max-width:54ch;margin:0 auto}
+.final .cta-row{display:flex;justify-content:center;align-items:center;gap:26px;margin-top:38px;flex-wrap:wrap}
+.qr{display:flex;align-items:center;gap:14px;text-align:left}
+.qr img{width:92px;border-radius:10px;border:4px solid #fff}
+.qr span{font-size:13px;color:var(--muted);max-width:16ch}
+
+footer{border-top:1px solid var(--line);padding:34px 0;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--gold-bright)}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p class="muted"><strong>ShiaDaily</strong><br />
-  Effective date: April 6, 2026<br />
-  Contact: <a href="mailto:shiadaily@icloud.com">shiadaily@icloud.com/a></p>
 
-  <p>This policy describes how ShiaDaily (“we,” “our,” or “the app”) handles information when you use our iOS app and related Apple Watch features.</p>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#"><span class="moon">☾</span> Shia Daily</a>
+      <div class="links">
+        <a href="#clock">Azan Clock</a>
+        <a href="#features">Features</a>
+        <a href="#devices">Every Device</a>
+        <a href="#smarthome">Smart Home</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="btn" href="https://apps.apple.com/us/app/shia-daily/id6761300885">
+         Download Free
+      </a>
+    </nav>
+  </div>
+</header>
 
-  <h2>Summary</h2>
-  <p>ShiaDaily is built to support Islamic calendar information, prayer times, reading and listening to religious content, and related tools. We do not require you to create an account in the app. We do not use third-party analytics or advertising SDKs in the app as shipped. Some features use the internet to load audio; optional features use your device location for prayer times and Qibla; optional iCloud sync stores your preferences and progress with Apple.</p>
+<main>
 
-  <h2>Information the app processes</h2>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="bismillah">حَيَّ عَلَى الصَّلَاة</div>
+      <p class="eyebrow">For iPad · iPhone · Apple Watch · Apple TV</p>
+      <h1>Your iPad, reborn as a <em>Shia azan clock</em>.</h1>
+      <p class="sub">Prop it on the mantel, the kitchen counter, or the bedside table. Shia Daily turns the screen into an always-on prayer clock for the whole family — accurate Jaffari prayer times, azan alerts, and themes that change with the Islamic calendar.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://apps.apple.com/us/app/shia-daily/id6761300885"> Get it on the App Store</a>
+        <span class="fineprint"><strong>Free.</strong> No subscription. No data collected.</span>
+      </div>
+      <div class="platforms">
+        <span><span class="dot"></span>Azan Clock Mode</span>
+        <span><span class="dot"></span>Full Quran</span>
+        <span><span class="dot"></span>Duas &amp; Ziyarat</span>
+        <span><span class="dot"></span>Islamic Calendar</span>
+        <span><span class="dot"></span>Apple TV &amp; Watch</span>
+      </div>
+    </div>
 
-  <h3>Location (optional)</h3>
-  <p>If you allow it, the app uses your device’s location (or coordinates you save) to calculate prayer times and show Qibla direction. Location is processed on your device for these features. We do not operate our own servers that receive or store your location.</p>
+    <div>
+      <div class="device" aria-label="Live preview of Shia Daily azan clock mode">
+        <div class="screen">
+          <div class="statusline"><span id="status-date">—</span><span>☾ Shia Daily</span></div>
+          <div class="hijri" id="hijri-line">Islamic date</div>
+          <div class="liveclock"><span id="clock-time">--:--</span><small id="clock-ampm"></small></div>
+          <div class="nextprayer">Next prayer · <b id="next-name">—</b></div>
+          <div class="countdown" id="next-count">&nbsp;</div>
+          <div class="prayer-row" id="prayer-row">
+            <div class="pill" data-p="Fajr"><div class="pname">Fajr</div><div class="ptime">5:00 AM</div></div>
+            <div class="pill" data-p="Dhuhr"><div class="pname">Dhuhr</div><div class="ptime">1:38 PM</div></div>
+            <div class="pill" data-p="Asr"><div class="pname">Asr</div><div class="ptime">5:22 PM</div></div>
+            <div class="pill" data-p="Maghrib"><div class="pname">Maghrib</div><div class="ptime">9:05 PM</div></div>
+            <div class="pill" data-p="Isha"><div class="pname">Isha</div><div class="ptime">10:04 PM</div></div>
+          </div>
+        </div>
+      </div>
+      <p class="device-caption">Live preview — ticking with your local time. Sample schedule shown; the app calculates times for your exact location.</p>
+    </div>
+  </div>
+</section>
 
-  <h3>Content and network requests</h3>
-  <p>When you stream or download certain audio, the app connects to servers over the internet to retrieve files. For example, some Islamic audio may be delivered from infrastructure we use (e.g. Cloudflare R2), and optional Quran recitation streams may be loaded from third-party hosts such as EveryAyah (everyayah.com). Those servers may receive standard technical data involved in a web request (such as IP address, user agent, and requested file), as with any HTTPS connection. We do not control the privacy practices of independent third-party audio hosts; you can avoid optional streaming sources by using offline or bundled content where available.</p>
+<div class="ribbon" role="presentation">
+  <div class="wrap">
+    <span>Jaffari prayer times</span>
+    <span>Full azan with video</span>
+    <span>HomeKit lighting</span>
+    <span>AirPlay speakers</span>
+    <span>Occasion-aware themes</span>
+    <span>Quran with audio</span>
+    <span>100+ Duas &amp; Ziyarat</span>
+    <span>iCloud sync across iPads</span>
+  </div>
+</div>
 
-  <h3>Data stored on your device and in iCloud (optional)</h3>
-  <p>The app stores preferences and activity you generate in the app—such as display settings, favorites, bookmarks, completion or progress for spiritual programs, custom occasions, prayer-related adjustments you configure, and similar app data—using on-device storage. If you use iCloud, this information may sync across your devices using <strong>Apple’s iCloud Key-Value Storage</strong>, which is governed by Apple’s privacy policy and your Apple ID settings. We cannot access the contents of your iCloud data.</p>
+<!-- ============ MADE FOR EVERY ROOM ============ -->
+<section class="rooms" id="rooms">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Made for Every Room</p>
+      <h2>One glance keeps the whole family on time for salah.</h2>
+      <p>Rotate the iPad to landscape on a stand or wall mount and Shia Daily transforms into a dedicated azan clock — for the prayer room, the kitchen counter, the hallway wall, or the bedside table.</p>
+    </div>
 
-  <h3>Apple Watch</h3>
-  <p>If you use the Apple Watch companion features, limited data may be transferred between your iPhone and Apple Watch using Apple’s system services (for example, WatchConnectivity) to support complications and synced information. That transfer happens between your own devices through Apple’s platform.</p>
+    <figure class="lead-photo">
+      <img src="img/room-wall.jpg" alt="iPad in a wooden wall mount displaying the Shia Daily azan clock in a home prayer room with a Quran on a rehal and prayer rugs">
+      <figcaption><b>The prayer room.</b> Wall-mounted in a frame, sized for reading from across the room — set your viewing distance and the text scales up.</figcaption>
+    </figure>
 
-  <h3>App Store / system services</h3>
-  <p>Apple may process information related to app installation, updates, crash diagnostics, and optional App Store features (such as ratings prompts) according to Apple’s policies. ShiaDaily may use standard iOS APIs (for example, StoreKit) to request an App Store review; that flow is handled by Apple.</p>
+    <div class="rooms-grid">
+      <figure>
+        <img src="img/room-kitchen.jpg" alt="iPad on a stand on a marble kitchen island showing the Shia Daily widget dashboard with Fajr as the next prayer">
+        <figcaption><b>The kitchen counter.</b> The widget dashboard keeps prayer times, today's occasions, and the daily hadith in the heart of the home.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/room-desk.jpg" alt="iPad on a silver stand on a wooden desk beside a Quran on a carved rehal and a tasbih, showing the Shia Daily home screen">
+        <figcaption><b>The study.</b> Next to the Quran stand and tasbih — duas and recitations begin on their own schedule, no taps needed.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/room-bedside.jpg" alt="iPad on a bedside desk at night showing the Eid ul-Mubahilah themed clock with Fajr countdown">
+        <figcaption><b>The bedside.</b> A dimmed night face counts down to Fajr — the last thing you see at night is the first prayer of tomorrow.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-  <h2>How we use information</h2>
-  <p>We use the information described above to operate app features you choose to use, keep your settings and progress, deliver audio when you request playback, and improve reliability. We do not sell your personal information. We do not use automated cross-app tracking for advertising in the app.</p>
+<!-- ============ CLOCK MODE ============ -->
+<section id="clock">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Azan Clock Mode</p>
+      <h2>A prayer clock that lives on your wall — not another gadget to buy.</h2>
+      <p>Leave Shia Daily open on an iPad and it becomes a dedicated azan clock: a large, glanceable display with the time, the Hijri date, today's prayer schedule, and a countdown to the next salah. When the time arrives, the whole screen announces it.</p>
+    </div>
 
-  <h2>Legal bases (where applicable)</h2>
-  <p>Depending on your region, processing may be based on your consent (for example, location permission), performance of a contract with you (providing the app), or our legitimate interests in operating and securing the app, consistent with applicable law.</p>
+    <figure class="frame clock-hero-shot">
+      <img src="img/clock-hero.jpg" alt="Shia Daily azan clock mode on iPad showing 8:44 PM with Maghrib at 9:05 PM countdown over an image of the Prophet's Mosque">
+    </figure>
 
-  <h2>Retention</h2>
-  <p>On-device data remains until you delete the app or clear app data. iCloud-synced data remains according to your Apple account and device settings. Server operators involved in delivering audio may retain standard logs under their own retention practices.</p>
+    <div class="clock-grid">
+      <figure>
+        <div class="frame"><img src="img/clock-asr.jpg" alt="Full-screen prayer announcement reading It's Asr Time with a countdown to Maghrib"></div>
+        <figcaption><b>Full-screen prayer announcements</b>When a prayer time arrives, the clock takes over the screen — العصر, It's Asr Time — with the next prayer counting down beneath it.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="img/clock-eid-maghrib.jpg" alt="Eid ul-Mubahilah themed azan clock with palm grove artwork and Maghrib highlighted"></div>
+        <figcaption><b>Themes that follow the calendar</b>On Eid the clock celebrates; in Muharram it mourns. Artwork, colors, and occasion banners change automatically with the Hijri date.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="img/clock-light.jpg" alt="Light daytime azan clock layout showing prayer time columns and next prayer Maghrib in 8 minutes"></div>
+        <figcaption><b>Day and night layouts</b>A soft light face for daytime hours and a deep, restful dark face after sunset — easy to read across the room, gentle in a bedroom.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="img/clock-eid-fajr.jpg" alt="Bedside azan clock at 12:19 AM showing Fajr at 5:00 AM in 4 hours 40 minutes"></div>
+        <figcaption><b>Made for the bedside</b>A dimmed tap-to-wake face shows exactly how long until Fajr — so the last thing you see at night is the first prayer of tomorrow.</figcaption>
+      </figure>
+    </div>
 
-  <h2>Security</h2>
-  <p>We rely on Apple’s platform security for on-device storage and iCloud sync. Network requests use industry-standard transport security (HTTPS) where supported by the servers involved.</p>
+    <div class="detail-list">
+      <div class="item"><b>Three clock faces — and a dashboard</b><p>The timeless Classic, a Mosque face with Arabic calligraphy, a Wall layout with a countdown ring — or switch to a customizable widget dashboard.</p></div>
+      <div class="item"><b>Sized for your distance</b><p>Set the viewing distance once and the type scales up for wall mounts read from across the room.</p></div>
+      <div class="item"><b>Full azan playback</b><p>The complete azan plays automatically at each prayer — including a beautiful recitation video by Abather Alhalwachi.</p></div>
+      <div class="item"><b>AirPlay to the whole house</b><p>Fill your home with the sound of the azan through any AirPlay speakers, with per-prayer control over which play and which stay silent.</p></div>
+      <div class="item"><b>Gentle on the display</b><p>Idle screensavers ease into a dimmed clock, prayer focus, or a photo frame — with deep blacks and subtle movement for burn-in protection.</p></div>
+      <div class="item"><b>Sleeps when the room does</b><p>A night schedule or the room going dark switches the display off; it wakes with a tap or the morning light.</p></div>
+    </div>
+  </div>
+</section>
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Everything Around the Clock</p>
+      <h2>One app for the whole daily rhythm.</h2>
+      <p>The azan clock is the face of Shia Daily — behind it is a complete companion for worship, reading, and remembrance.</p>
+    </div>
+    <div class="feat-grid">
+      <figure class="feature">
+        <div class="frame"><img src="img/prayer-times.jpg" alt="Prayer times screen for Tyrone, Georgia listing Fajr, Sunrise, Dhuhr, Asr, Sunset, Maghrib, Isha, and Midnight"></div>
+        <figcaption><b>Accurate Jaffari times</b>Fajr to midnight for your exact location, with per-prayer notification bells and Qibla direction.</figcaption>
+      </figure>
+      <figure class="feature">
+        <div class="frame"><img src="img/calendar.jpg" alt="Hijri calendar for June 2026 with upcoming occasions including Eid ul-Mubahilah and Roz-e-Ashura"></div>
+        <figcaption><b>Shia Islamic calendar</b>Every wiladat, shahadat, and Eid — mourning days marked in red, celebrations highlighted, all a glance away.</figcaption>
+      </figure>
+      <figure class="feature">
+        <div class="frame"><img src="img/duas-library.jpg" alt="Duas and Ziyarat library showing Ayat al-Kursi, Surah Yasin, Dua-e-Tawassul, and Dua-e-Kumayl"></div>
+        <figcaption><b>Duas &amp; Ziyarat library</b>Daily and weekly amaal, ziyarat of the Ahlul Bayt (as), and the duas your family returns to every week.</figcaption>
+      </figure>
+      <figure class="feature">
+        <div class="frame"><img src="img/quran-reader.jpg" alt="Quran reader showing Surah Al-Baqarah with transliteration, English, Gujarati, and Urdu translations and audio controls"></div>
+        <figcaption><b>Full Quran, read &amp; listen</b>Arabic with transliteration and English, Gujarati, and Urdu translations — with recitation audio and bookmarks.</figcaption>
+      </figure>
+      <figure class="feature">
+        <div class="frame"><img src="img/dua-kumayl.jpg" alt="Dua-e-Kumayl reader with Arabic text, translation, and an audio player with reciter selection"></div>
+        <figcaption><b>Audio for recitations</b>Follow along line by line with renowned reciters, adjustable speed, and offline downloads for travel.</figcaption>
+      </figure>
+      <figure class="feature">
+        <div class="frame"><img src="img/home-tawassul.jpg" alt="Home screen featuring Dua-e-Tawassul for Tuesday night with custom schedules like Dua-e-Kumayl 30 minutes after Maghrib"></div>
+        <figcaption><b>Custom schedules</b>Quran 15 minutes before Maghrib. Dua-e-Kumayl on Thursday nights. Build routines around the prayer times, and the app keeps them.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-  <h2>Children</h2>
-  <p>The app is intended for a general audience. We do not knowingly collect personal information from children in a way that requires parental consent under applicable laws. If you believe a child has provided personal information improperly, contact us and we will help you address it.</p>
+<!-- ============ SMART HOME ============ -->
+<section class="smarthome" id="smarthome">
+  <div class="wrap">
+    <figure>
+      <img src="img/room-homekit.jpg" alt="Wall-mounted iPad running Shia Daily HomeKit controls beside prayer room cabinets glowing with red shelf lighting for a night of mourning">
+      <figcaption>Namaz room cabinet lights dressed in red for a night of mourning — synced automatically by Shia Daily.</figcaption>
+    </figure>
+    <div>
+      <p class="eyebrow">Your Whole Home, In Sync</p>
+      <h2>The clock reaches beyond its screen.</h2>
+      <p style="color:var(--muted);margin-top:14px">Shia Daily connects to Apple HomeKit, so your home itself can follow the prayer times and the Islamic calendar.</p>
+      <ul>
+        <li>
+          <span class="glyph">💡</span>
+          <div><b>Lighting that knows the occasion</b><p>Lights brighten before the azan and take on the color of the day — green for wiladat, red for shahadat, blue for celebrations, dimmed for nights of mourning.</p></div>
+        </li>
+        <li>
+          <span class="glyph">☁</span>
+          <div><b>iCloud sync across iPads</b><p>Schedules, widgets, and HomeKit setup sync to every iPad in the house — or customize each room separately.</p></div>
+        </li>
+        <li>
+          <span class="glyph">☾</span>
+          <div><b>Occasion-aware, automatically</b><p>The clock follows the Islamic calendar, surfacing today's events and adapting bulb and LED-strip colors to the occasion.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <h2>Your choices</h2>
-  <ul>
-    <li>Location: you can deny location access or revoke it in iOS Settings; you may still use many features with manually chosen locations where the app supports that.</li>
-    <li>iCloud: you can disable iCloud for the app or sign out of iCloud in iOS Settings.</li>
-    <li>Network audio: avoid streaming sources if you do not want network requests for playback.</li>
-  </ul>
+<!-- ============ EVERY DEVICE ============ -->
+<section class="devices" id="devices">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">One App · Every Screen</p>
+      <h2>From the living-room TV to the watch on your wrist.</h2>
+      <p>Shia Daily is a true Apple ecosystem app — iPad, iPhone, Apple Watch, and Apple TV — with the same prayer times, Hijri calendar, Quran, and duas shaped for every screen in the house.</p>
+    </div>
 
-  <h2>International users</h2>
-  <p>If you use the app outside your home country, information may be processed on your device and, if you use iCloud or internet audio, by Apple or network operators in accordance with their policies and applicable law.</p>
+    <!-- Apple TV -->
+    <div class="device-block">
+      <p class="device-eyebrow">Apple TV</p>
+      <h3>The whole app, on the biggest screen in the house.</h3>
+      <p class="blurb">Open Shia Daily on Apple TV and the living room becomes a place of remembrance. Navigate prayer times, the calendar, duas, and the full Quran with the Siri Remote — and let recitations fill the room.</p>
 
-  <h2>Changes to this policy</h2>
-  <p>We may update this policy from time to time. The “Effective date” at the top will change when we do. Continued use of the app after changes means you accept the updated policy.</p>
+      <figure class="tv">
+        <div class="tv-screen"><img src="img/tv-prayer-times.jpg" alt="Shia Daily on Apple TV showing the full prayer times grid for Atlanta, Georgia with Dhuhr highlighted in gold"></div>
+        <div class="tv-neck"></div>
+        <div class="tv-base"></div>
+      </figure>
 
-  <h2>Contact</h2>
-  <p>Questions: <a href="mailto:shiadaily@icloud.com">shiadaily@icloud.com</a></p>
+      <div class="tv-thumbs">
+        <figure>
+          <img src="img/tv-duas.jpg" alt="Apple TV Duas and Ziyarat library with Dua-e-Ahd, Dua-e-Iftitah, and Ziyarat of the Ahlul Bayt in a browsable grid">
+          <figcaption><b>Duas &amp; Ziyarat</b>Browse and play with the remote</figcaption>
+        </figure>
+        <figure>
+          <img src="img/tv-quran.jpg" alt="Apple TV Quran browser showing surahs grouped by Juz with a resume-reading banner">
+          <figcaption><b>Full Quran</b>By surah or juz, resume where you left off</figcaption>
+        </figure>
+        <figure>
+          <img src="img/tv-calendar.jpg" alt="Apple TV Hijri calendar for June 2026 with occasion colors and Roz-e-Ashura details">
+          <figcaption><b>Hijri calendar</b>Occasions and Hijri-date tuning</figcaption>
+        </figure>
+        <figure>
+          <img src="img/tv-aamal.jpg" alt="Apple TV Today's Aamal program with morning, afternoon and night duas including Dua al-Ahd and Ziyarat Aal-e-Yasin">
+          <figcaption><b>Today's Aamal</b>The day's program, start to finish</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- iPhone -->
+    <div class="device-block">
+      <p class="device-eyebrow">iPhone</p>
+      <h3>Your whole daily rhythm, in your pocket.</h3>
+      <p class="blurb">A home screen of live widgets, a missed-salah tracker, the Qadha log, the Quran with audio, and a tasbih counter — everything from the big screens, with you wherever you go.</p>
+
+      <div class="phone-fan">
+        <figure class="phone tall"><img src="img/ip-widgets.jpg" alt="iPhone home screen filled with Shia Daily widgets — Hijri calendar, prayer-time grid, Quran bookmarks, and quick dua buttons"></figure>
+        <figure class="phone"><img src="img/ip-home.jpg" alt="Shia Daily iPhone home with next-prayer countdown, missed-salah tracker, today's aamal progress, and the daily hadith"></figure>
+        <figure class="phone tall"><img src="img/ip-qadha.jpg" alt="Qadha Tracker on iPhone showing missed prayers, fasts owed, and salat al-ayat with all prayers made up"></figure>
+        <figure class="phone"><img src="img/ip-dua.jpg" alt="Dua-e-Tawassul on iPhone with Arabic, transliteration, English and Gujarati translation, and reciter selection"></figure>
+      </div>
+      <p class="phone-caption">Widgets · Home · Qadha Tracker · Dua reader — and many more</p>
+
+      <div class="iphone-features">
+        <div class="item"><b>A home screen of widgets</b><p>Next prayer, the Hijri calendar with occasion colors, Quran bookmarks, one-tap duas, and a missed-salah toggle — mix the ones you want.</p></div>
+        <div class="item"><b>Qadha &amp; aamal tracking</b><p>Log and make up missed prayers, fasts, and salat al-ayat, and check off the day's aamal as you go.</p></div>
+        <div class="item"><b>Tasbih &amp; Qibla</b><p>A built-in digital tasbih counter and an accurate Qibla direction, always a tap away.</p></div>
+        <div class="item"><b>Quran &amp; duas with audio</b><p>The full Quran and 100+ duas and ziyarat, with recitation audio and Gujarati, Urdu, and English translations.</p></div>
+        <div class="item"><b>Daily hadith &amp; occasions</b><p>A hadith each day and a look ahead at upcoming wiladat, shahadat, and Eids.</p></div>
+        <div class="item"><b>Private by design</b><p>No data collected — everything stays on your devices and in your iCloud.</p></div>
+      </div>
+    </div>
+
+    <!-- Apple Watch -->
+    <div class="device-block watch-block">
+      <p class="device-eyebrow">Apple Watch</p>
+      <h3>The next prayer, always a wrist-raise away.</h3>
+      <p class="blurb">Put Shia Daily complications right on your watch face — the next salah, the Hijri date, and quick taps for duas and tasbih — then open the app for the full prayer schedule, missed-salah logging, and beads you can count on the move.</p>
+
+      <div class="watch-row">
+        <figure class="watch-face"><img src="img/watch-face-infograph.jpg" alt="Apple Watch Infograph face with Shia Daily complications: Dhuhr time, Hijri date, missed-salah count, and a Duas shortcut"></figure>
+        <figure class="watch-face mid"><img src="img/watch-face-modular.jpg" alt="Apple Watch Modular face showing Shia Daily next-prayer countdown to Dhuhr, the five daily prayer times, and Duas and Tasbih shortcuts"></figure>
+        <figure class="watch-face"><img src="img/watch-face-missed.jpg" alt="Apple Watch face with the Shia Daily missed-salah complication showing the five prayers to tap and mark">
+        </figure>
+      </div>
+      <p class="watch-caption">Complications for the faces you already use</p>
+
+      <div class="watch-row">
+        <figure class="watch-app"><img src="img/watch-app-grid.png" alt="Shia Daily Apple Watch app grid with Prayers, Calendar, Occasions, Tasbih, Duas after namaz, and Missed Salah"></figure>
+        <figure class="watch-app"><img src="img/watch-app-missed.png" alt="Apple Watch missed-salah screen showing all salah logged for today with a per-prayer list"></figure>
+        <figure class="watch-app"><img src="img/watch-app-tasbih.png" alt="Apple Watch Tasbih of Syeda Fatima Zahra counter on the wrist, showing bead 1 of 34"></figure>
+      </div>
+      <p class="watch-caption">The full app on the wrist — Prayers, Duas after namaz, Tasbih, and more</p>
+
+      <div class="watch-features">
+        <div class="item"><b>Glanceable complications</b><p>Next prayer and countdown, Hijri date, missed-salah count, and shortcuts to Duas and Tasbih — on Modular, Infograph, and more.</p></div>
+        <div class="item"><b>Tap to log a missed salah</b><p>Mark a prayer from the wrist and it syncs straight to the Qadha tracker.</p></div>
+        <div class="item"><b>Tasbih on the move</b><p>Count Tasbih of Syeda Fatima Zahra (sa) and your own dhikr without reaching for your phone.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Why an App?</p>
+      <h2>The azan clock you already own.</h2>
+      <p style="color:var(--muted);margin-top:14px">No new hardware to buy, set up, or find a spot for. The iPad on your shelf, the iPhone in your pocket, the watch on your wrist, and the TV in your living room — Shia Daily brings the azan clock and a complete daily companion to the Apple devices already in your home.</p>
+      <ul>
+        <li>
+          <span class="glyph">$0</span>
+          <div><b>Free, forever</b><p>No purchase, no subscription, no ads. Download and it's done.</p></div>
+        </li>
+        <li>
+          <span class="glyph">⟳</span>
+          <div><b>Always improving</b><p>Regular App Store updates — qadha tracker, tasbih, Hajj &amp; Umrah guide, and occasion themes have all shipped since launch.</p></div>
+        </li>
+        <li>
+          <span class="glyph">⌚</span>
+          <div><b>Beyond the wall</b><p>The same prayer times and duas on your iPhone and Apple Watch when you leave the house.</p></div>
+        </li>
+        <li>
+          <span class="glyph">🔒</span>
+          <div><b>Private by design</b><p>The app collects no data at all — your worship stays between you and Allah.</p></div>
+        </li>
+      </ul>
+    </div>
+    <figure class="frame">
+      <img src="img/home-next-prayer.jpg" alt="Shia Daily home screen showing next prayer Maghrib at 9:05 PM in 13 minutes alongside today's full prayer schedule">
+    </figure>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Questions</p>
+      <h2>Before you set it on the shelf.</h2>
+    </div>
+    <details>
+      <summary>How do I use my iPad as an always-on azan clock?</summary>
+      <p>Open Shia Daily and rotate the iPad to landscape on a stand or wall mount — it transforms into the azan clock automatically. Keep the iPad plugged in with the app open, and idle screensavers, burn-in protection, and night sleep schedules take care of the display. Quran resume, daily aamal, and your custom dua schedules all play on their own.</p>
+    </details>
+    <details>
+      <summary>Does it work with my smart lights?</summary>
+      <p>Yes — Shia Daily connects to Apple HomeKit. Lights can brighten before the azan and change color with the Islamic calendar: green for wiladat, red for shahadat, blue for celebrations, and dimmed for nights of mourning.</p>
+    </details>
+    <details>
+      <summary>Does it work for my city?</summary>
+      <p>Yes — prayer times are calculated for your exact location anywhere in the world, following the Jaffari method, with sunset, Maghrib, and midnight shown separately.</p>
+    </details>
+    <details>
+      <summary>Does it work offline?</summary>
+      <p>Prayer times, the calendar, and bundled audio work without a connection, and additional recitations can be downloaded ahead of travel.</p>
+    </details>
+    <details>
+      <summary>Which devices are supported?</summary>
+      <p>iPhone and iPad (iOS 16.6 or later), Apple Watch (watchOS 10.6 or later), Apple TV (tvOS), Apple Silicon Macs, and Apple Vision Pro. The Apple TV app is available now on the App Store. English, Arabic, and Gujarati are supported, with Gujarati and Urdu translations for readings.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h2>Begin tonight, before Maghrib.</h2>
+    <p>Download Shia Daily, set the iPad where the family gathers, and let the house keep its own prayer time.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://apps.apple.com/us/app/shia-daily/id6761300885"> Download on the App Store</a>
+      <div class="qr">
+        <img src="img/appstore-qr.png" alt="QR code linking to Shia Daily on the App Store">
+        <span>Scan with your iPhone or iPad camera</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>☾ Shia Daily · © 2026 Vasim Momin</span>
+    <span>
+      <a href="https://apps.apple.com/us/app/shia-daily/id6761300885">App Store</a> ·
+      <a href="https://vmomin.github.io/shiadaily-privacy/">Privacy Policy</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Sample schedule (matches the screenshots; the real app computes per-location)
+  const schedule = [
+    ["Fajr",    5*60],
+    ["Dhuhr",  13*60+38],
+    ["Asr",    17*60+22],
+    ["Maghrib",21*60+5],
+    ["Isha",   22*60+4],
+  ];
+  const $ = id => document.getElementById(id);
+  const pills = document.querySelectorAll(".pill");
+
+  function fmtCount(mins){
+    const h = Math.floor(mins/60), m = mins%60;
+    return (h>0 ? h+"h " : "") + m + "m";
+  }
+
+  function tick(){
+    const now = new Date();
+    let h = now.getHours(), m = now.getMinutes();
+    const ampm = h >= 12 ? "PM" : "AM";
+    let h12 = h % 12; if(h12 === 0) h12 = 12;
+    const tstr = h12 + ":" + String(m).padStart(2,"0");
+    $("clock-time").textContent = tstr;
+    $("clock-ampm").textContent = ampm;
+
+    $("status-date").textContent = now.toLocaleDateString(undefined,
+      {weekday:"short", month:"short", day:"numeric"});
+
+    // Hijri date via Intl (supported in all modern browsers)
+    let hijri = "";
+    try{
+      hijri = new Intl.DateTimeFormat(
+        "en-u-ca-islamic-umalqura",{day:"numeric",month:"long",year:"numeric"}
+      ).format(now) + " AH";
+    }catch(e){}
+    $("hijri-line").textContent = hijri;
+
+    const cur = h*60 + m;
+    let next = schedule.find(p => p[1] > cur);
+    let mins;
+    if(next){ mins = next[1] - cur; }
+    else { next = schedule[0]; mins = 24*60 - cur + next[1]; }
+    $("next-name").textContent = next[0];
+    $("next-count").textContent = "in " + fmtCount(mins);
+    pills.forEach(p => p.classList.toggle("active", p.dataset.p === next[0]));
+  }
+  tick();
+  setInterval(tick, 1000 * 10);
+})();
+</script>
 </body>
 </html>
