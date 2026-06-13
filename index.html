@@ -270,6 +270,13 @@ section{padding:96px 0}
 @media(max-width:820px){.watch-features{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.watch-features{grid-template-columns:1fr}.watch-face.mid{transform:none}}
 
+/* TV interactive thumbnails */
+.tv-thumbs figure{cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, outline .15s}
+.tv-thumbs figure:hover{transform:translateY(-3px);box-shadow:0 0 0 2px var(--gold), 0 12px 28px rgba(0,0,0,.7)}
+.tv-thumbs figure.active{outline:2px solid var(--gold-bright);outline-offset:0}
+#tv-main{transition:opacity .22s ease}
+#tv-main.fading{opacity:0}
+
 /* ---------- rooms gallery ---------- */
 .rooms .lead-photo{border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 70px -28px rgba(0,0,0,.85), 0 0 0 1px var(--line)}
 .rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:26px}
@@ -384,10 +391,9 @@ footer a:hover{color:var(--gold-bright)}
 <header>
   <div class="wrap">
     <nav>
-      <a class="brand" href="#"><span class="moon">☾</span> Shia Daily</a>
+      <a class="brand" href="#"><img src="img/appicon.png" alt="Shia Daily app icon" style="width:34px;height:34px;border-radius:8px;flex-shrink:0"> Shia Daily</a>
       <div class="links">
         <a href="#clock">Azan Clock</a>
-        <a href="#features">Features</a>
         <a href="#devices">Every Device</a>
         <a href="#smarthome">Smart Home</a>
         <a href="#faq">FAQ</a>
@@ -405,8 +411,13 @@ footer a:hover{color:var(--gold-bright)}
 <section class="hero" id="top">
   <div class="wrap">
     <div>
-      <div class="bismillah">حَيَّ عَلَى الصَّلَاة</div>
-      <p class="eyebrow">For iPad · iPhone · Apple Watch · Apple TV</p>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+        <img src="img/appicon.png" alt="Shia Daily app icon" style="width:64px;height:64px;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.5)">
+        <div>
+          <div class="bismillah" style="margin-bottom:2px">حَيَّ عَلَى الصَّلَاة</div>
+          <p class="eyebrow" style="margin:0">For iPad · iPhone · Apple Watch · Apple TV</p>
+        </div>
+      </div>
       <h1>Your iPad, reborn as a <em>Shia azan clock</em>.</h1>
       <p class="sub">Prop it on the mantel, the kitchen counter, or the bedside table. Shia Daily turns the screen into an always-on prayer clock for the whole family — accurate Jaffari prayer times, azan alerts, and themes that change with the Islamic calendar.</p>
       <div class="cta-row">
@@ -467,18 +478,18 @@ footer a:hover{color:var(--gold-bright)}
     </div>
 
     <figure class="lead-photo">
-      <img src="img/room-wall.jpg" alt="iPad in a wooden wall mount displaying the Shia Daily azan clock in a home prayer room with a Quran on a rehal and prayer rugs">
-      <figcaption><b>The prayer room.</b> Wall-mounted in a frame, sized for reading from across the room — set your viewing distance and the text scales up.</figcaption>
+      <img src="img/room-desk.jpg" alt="iPad on a silver stand on a wooden desk beside a Quran on a carved rehal and a tasbih, showing the Shia Daily home screen">
+      <figcaption><b>The study.</b> Next to the Quran stand and tasbih — duas and recitations begin on their own schedule, no taps needed.</figcaption>
     </figure>
 
     <div class="rooms-grid">
       <figure>
-        <img src="img/room-kitchen.jpg" alt="iPad on a stand on a marble kitchen island showing the Shia Daily widget dashboard with Fajr as the next prayer">
-        <figcaption><b>The kitchen counter.</b> The widget dashboard keeps prayer times, today's occasions, and the daily hadith in the heart of the home.</figcaption>
+        <img src="img/room-wall.jpg" alt="iPad in a wooden wall mount displaying the Shia Daily azan clock in a home prayer room with a Quran on a rehal and prayer rugs">
+        <figcaption><b>The prayer room.</b> Wall-mounted in a frame, sized for reading from across the room — set your viewing distance and the text scales up.</figcaption>
       </figure>
       <figure>
-        <img src="img/room-desk.jpg" alt="iPad on a silver stand on a wooden desk beside a Quran on a carved rehal and a tasbih, showing the Shia Daily home screen">
-        <figcaption><b>The study.</b> Next to the Quran stand and tasbih — duas and recitations begin on their own schedule, no taps needed.</figcaption>
+        <img src="img/room-kitchen.jpg" alt="iPad on a stand on a marble kitchen island showing the Shia Daily widget dashboard with Fajr as the next prayer">
+        <figcaption><b>The kitchen counter.</b> The widget dashboard keeps prayer times, today's occasions, and the daily hadith in the heart of the home.</figcaption>
       </figure>
       <figure>
         <img src="img/room-bedside.jpg" alt="iPad on a bedside desk at night showing the Eid ul-Mubahilah themed clock with Fajr countdown">
@@ -608,30 +619,34 @@ footer a:hover{color:var(--gold-bright)}
     <div class="device-block">
       <p class="device-eyebrow">Apple TV</p>
       <h3>The whole app, on the biggest screen in the house.</h3>
-      <p class="blurb">Open Shia Daily on Apple TV and the living room becomes a place of remembrance. Navigate prayer times, the calendar, duas, and the full Quran with the Siri Remote — and let recitations fill the room.</p>
+      <p class="blurb">Open Shia Daily on Apple TV and the living room becomes a place of remembrance. Navigate prayer times, the calendar, duas, and the full Quran with the Siri Remote — and let recitations fill the room. Click any thumbnail to preview it on the TV.</p>
 
       <figure class="tv">
-        <div class="tv-screen"><img src="img/tv-prayer-times.jpg" alt="Shia Daily on Apple TV showing the full prayer times grid for Atlanta, Georgia with Dhuhr highlighted in gold"></div>
+        <div class="tv-screen"><img id="tv-main" src="img/tv-prayer-times.jpg" alt="Shia Daily on Apple TV — Prayer Times"></div>
         <div class="tv-neck"></div>
         <div class="tv-base"></div>
       </figure>
 
       <div class="tv-thumbs">
-        <figure>
-          <img src="img/tv-duas.jpg" alt="Apple TV Duas and Ziyarat library with Dua-e-Ahd, Dua-e-Iftitah, and Ziyarat of the Ahlul Bayt in a browsable grid">
+        <figure class="tv-thumb active" data-src="img/tv-prayer-times.jpg" data-alt="Prayer Times on Apple TV">
+          <img src="img/tv-prayer-times.jpg" alt="Prayer times on Apple TV">
+          <figcaption><b>Prayer Times</b>All 8 prayers, next highlighted</figcaption>
+        </figure>
+        <figure class="tv-thumb" data-src="img/tv-duas.jpg" data-alt="Duas and Ziyarat on Apple TV">
+          <img src="img/tv-duas.jpg" alt="Duas and Ziyarat on Apple TV">
           <figcaption><b>Duas &amp; Ziyarat</b>Browse and play with the remote</figcaption>
         </figure>
-        <figure>
-          <img src="img/tv-quran.jpg" alt="Apple TV Quran browser showing surahs grouped by Juz with a resume-reading banner">
+        <figure class="tv-thumb" data-src="img/tv-quran.jpg" data-alt="Quran on Apple TV">
+          <img src="img/tv-quran.jpg" alt="Quran on Apple TV">
           <figcaption><b>Full Quran</b>By surah or juz, resume where you left off</figcaption>
         </figure>
-        <figure>
-          <img src="img/tv-calendar.jpg" alt="Apple TV Hijri calendar for June 2026 with occasion colors and Roz-e-Ashura details">
-          <figcaption><b>Hijri calendar</b>Occasions and Hijri-date tuning</figcaption>
+        <figure class="tv-thumb" data-src="img/tv-calendar.jpg" data-alt="Hijri Calendar on Apple TV">
+          <img src="img/tv-calendar.jpg" alt="Hijri Calendar on Apple TV">
+          <figcaption><b>Hijri Calendar</b>Occasions and Hijri-date tuning</figcaption>
         </figure>
-        <figure>
-          <img src="img/tv-aamal.jpg" alt="Apple TV Today's Aamal program with morning, afternoon and night duas including Dua al-Ahd and Ziyarat Aal-e-Yasin">
-          <figcaption><b>Today's Aamal</b>The day's program, start to finish</figcaption>
+        <figure class="tv-thumb" data-src="img/tv-aamal.jpg" data-alt="Today's Aamal on Apple TV">
+          <img src="img/tv-aamal.jpg" alt="Today's Aamal on Apple TV">
+          <figcaption><b>Today's Aamal</b>Morning, afternoon &amp; night program</figcaption>
         </figure>
       </div>
     </div>
@@ -640,15 +655,19 @@ footer a:hover{color:var(--gold-bright)}
     <div class="device-block">
       <p class="device-eyebrow">iPhone</p>
       <h3>Your whole daily rhythm, in your pocket.</h3>
-      <p class="blurb">A home screen of live widgets, a missed-salah tracker, the Qadha log, the Quran with audio, and a tasbih counter — everything from the big screens, with you wherever you go.</p>
+      <p class="blurb">A home screen of live widgets, missed-salah tracker, Qadha log, the full Quran with audio, duas and ziyarat, the Hijri calendar, and a tasbih counter — everything, with you wherever you go.</p>
 
       <div class="phone-fan">
-        <figure class="phone tall"><img src="img/ip-widgets.jpg" alt="iPhone home screen filled with Shia Daily widgets — Hijri calendar, prayer-time grid, Quran bookmarks, and quick dua buttons"></figure>
-        <figure class="phone"><img src="img/ip-home.jpg" alt="Shia Daily iPhone home with next-prayer countdown, missed-salah tracker, today's aamal progress, and the daily hadith"></figure>
-        <figure class="phone tall"><img src="img/ip-qadha.jpg" alt="Qadha Tracker on iPhone showing missed prayers, fasts owed, and salat al-ayat with all prayers made up"></figure>
-        <figure class="phone"><img src="img/ip-dua.jpg" alt="Dua-e-Tawassul on iPhone with Arabic, transliteration, English and Gujarati translation, and reciter selection"></figure>
+        <figure class="phone tall"><img src="img/ip-widgets.jpg" alt="iPhone home screen with Shia Daily widgets — Hijri calendar, prayer-time grid, Quran bookmarks"></figure>
+        <figure class="phone"><img src="img/ip-home.jpg" alt="Shia Daily iPhone home — next prayer countdown and today's aamal progress"></figure>
+        <figure class="phone tall"><img src="img/ip-calendar.jpg" alt="Hijri calendar on iPhone with occasion colors and upcoming events list"></figure>
+        <figure class="phone"><img src="img/ip-search.jpg" alt="Search screen on iPhone for finding duas, surahs and occasions"></figure>
+        <figure class="phone tall"><img src="img/ip-duas.jpg" alt="Duas and Ziyarat library on iPhone with categories and artwork"></figure>
+        <figure class="phone"><img src="img/ip-dua.jpg" alt="Dua-e-Tawassul reader with Arabic, transliteration, English and Gujarati translation"></figure>
+        <figure class="phone tall"><img src="img/ip-quran.jpg" alt="Quran reader on iPhone with surah and juz navigation"></figure>
+        <figure class="phone"><img src="img/ip-qadha.jpg" alt="Qadha Tracker on iPhone showing all prayers made up"></figure>
       </div>
-      <p class="phone-caption">Widgets · Home · Qadha Tracker · Dua reader — and many more</p>
+      <p class="phone-caption">Widgets · Home · Calendar · Search · Duas · Dua reader · Quran · Qadha Tracker</p>
 
       <div class="iphone-features">
         <div class="item"><b>A home screen of widgets</b><p>Next prayer, the Hijri calendar with occasion colors, Quran bookmarks, one-tap duas, and a missed-salah toggle — mix the ones you want.</p></div>
@@ -688,38 +707,6 @@ footer a:hover{color:var(--gold-bright)}
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ============ WHY ============ -->
-<section class="why" id="why">
-  <div class="wrap">
-    <div>
-      <p class="eyebrow">Why an App?</p>
-      <h2>The azan clock you already own.</h2>
-      <p style="color:var(--muted);margin-top:14px">No new hardware to buy, set up, or find a spot for. The iPad on your shelf, the iPhone in your pocket, the watch on your wrist, and the TV in your living room — Shia Daily brings the azan clock and a complete daily companion to the Apple devices already in your home.</p>
-      <ul>
-        <li>
-          <span class="glyph">$0</span>
-          <div><b>Free, forever</b><p>No purchase, no subscription, no ads. Download and it's done.</p></div>
-        </li>
-        <li>
-          <span class="glyph">⟳</span>
-          <div><b>Always improving</b><p>Regular App Store updates — qadha tracker, tasbih, Hajj &amp; Umrah guide, and occasion themes have all shipped since launch.</p></div>
-        </li>
-        <li>
-          <span class="glyph">⌚</span>
-          <div><b>Beyond the wall</b><p>The same prayer times and duas on your iPhone and Apple Watch when you leave the house.</p></div>
-        </li>
-        <li>
-          <span class="glyph">🔒</span>
-          <div><b>Private by design</b><p>The app collects no data at all — your worship stays between you and Allah.</p></div>
-        </li>
-      </ul>
-    </div>
-    <figure class="frame">
-      <img src="img/home-next-prayer.jpg" alt="Shia Daily home screen showing next prayer Maghrib at 9:05 PM in 13 minutes alongside today's full prayer schedule">
-    </figure>
   </div>
 </section>
 
@@ -831,6 +818,22 @@ footer a:hover{color:var(--gold-bright)}
   }
   tick();
   setInterval(tick, 1000 * 10);
+  // TV gallery interaction
+  const tvMain = document.getElementById('tv-main');
+  const thumbs = document.querySelectorAll('.tv-thumb');
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      if(thumb.classList.contains('active')) return;
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      tvMain.classList.add('fading');
+      setTimeout(() => {
+        tvMain.src = thumb.dataset.src;
+        tvMain.alt = thumb.dataset.alt;
+        tvMain.classList.remove('fading');
+      }, 220);
+    });
+  });
 })();
 </script>
 </body>
